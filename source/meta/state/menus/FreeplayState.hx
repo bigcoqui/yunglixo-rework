@@ -211,7 +211,6 @@ class FreeplayState extends MusicBeatState
 		selector.text = ">";
 		// add(selector);
 		
-		
 		// oooh
 		for(i in 0...mechanicsString.length)
 		{
@@ -242,7 +241,6 @@ class FreeplayState extends MusicBeatState
 		
 		// for some reason it crashes when i dont do this
 		Init.saveMechanics();
-	}
 		
 		#if mobile
     addVirtualPad(LEFT_FULL, A_B_C);
@@ -299,7 +297,7 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		//var accepted = controls.ACCEPT;
-		var accepted = controls.ACCEPT;
+		var accepted = FlxG.keys.justPressed.ENTER;
 
 		if (upP)
 			changeSelection(-1);
@@ -317,7 +315,7 @@ class FreeplayState extends MusicBeatState
 			Main.switchState(this, new MainMenuState());
 		}
 		
-		if (FlxG.keys.justPressed.SPACE #if android || virtualPad.buttonC.justPressed #end && threadActive)
+		if (FlxG.keys.justPressed.SPACE #if mobile || virtualPad.buttonC.justPressed #end && threadActive)
 		{
 			for(i in 0...mechanicsString.length)
 			{
@@ -339,7 +337,7 @@ class FreeplayState extends MusicBeatState
 			trace('CUR WEEK' + PlayState.storyWeek);
 
 			threadActive = false;
-			
+
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.stop();
 
@@ -404,7 +402,6 @@ class FreeplayState extends MusicBeatState
 		
 		/*
 		// select crazy pizza
-		minerTxt.y = FlxMath.lerp(minerTxt.y, FlxG.height - minerTxt.height - ((theSong == "crazy-pizza") ? 30 : -200), 0.18);
 		minerTxt.y = FlxMath.lerp(minerTxt.y, FlxG.height - minerTxt.height - ((selectedSong == "crazy-pizza") ? 30 : -200), 0.18);
 		// o
 		minerCheck.x = minerTxt.x - minerCheck.width + 5;
@@ -412,7 +409,7 @@ class FreeplayState extends MusicBeatState
 		// oo
 		minerTxtWarn.y = minerTxt.y + minerTxt.height;
 		*/
-
+		
 		// fazer o check aparecer quando tu ta em cima da musica
 		for(i in 0...mechanicsString.length)
 		{
@@ -424,12 +421,12 @@ class FreeplayState extends MusicBeatState
 				case 1:
 					tSong = "collision";
 			}
-
+			
 			funnyTxt[i].y = FlxMath.lerp(funnyTxt[i].y, FlxG.height - funnyTxt[i].height - ((selectedSong == tSong) ? 30 : -200), 0.18);
-
+			
 			funnyCheck[i].x = funnyTxt[i].x - funnyCheck[i].width + 5;
 			funnyCheck[i].y = funnyTxt[i].y - (funnyCheck[i].height / 2) + 2.5;
-
+			
 			funnyWarn[i].y = funnyTxt[i].y + funnyTxt[i].height;
 		}
 	}
@@ -451,7 +448,7 @@ class FreeplayState extends MusicBeatState
 		if (lastDifficulty != null && change != 0)
 			while (existingDifficulties[curSelected][curDifficulty] == lastDifficulty)
 				curDifficulty += change;
-
+		
 		if (curDifficulty < 0)
 			curDifficulty = existingDifficulties[curSelected].length - 1;
 		if (curDifficulty > existingDifficulties[curSelected].length - 1)
