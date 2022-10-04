@@ -783,9 +783,21 @@ class PlayState extends MusicBeatState
 
 		elapsedtime += (elapsed * Math.PI);
 
+		#if android
+                var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				justTouched = true;
+			}
+		}
+		#end
+
 		if(waitforcountdown) // warningStart
 		{
-			if(controls.DODGE #if android || _pad.buttonA.justPressed #end)
+			if(controls.DODGE #if android || justTouched #end)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				waitforcountdown = false;
@@ -803,18 +815,6 @@ class PlayState extends MusicBeatState
 			// wheee the shift closes the dialogue
 			if (FlxG.keys.justPressed.SHIFT #if android || FlxG.android.justReleased.BACK #end)
 				dialogueBox.closeDialog();
-				
-		#if android
-                var justTouched:Bool = false;
-
-		for (touch in FlxG.touches.list)
-		{
-			if (touch.justPressed)
-			{
-				justTouched = true;
-			}
-		}
-		#end
 
 			// the change I made was just so that it would only take accept inputs
 			if (controls.ACCEPT #if android || justTouched #end && dialogueBox.textStarted)
