@@ -35,9 +35,10 @@ class MobileControlsSubState extends FlxSubState
 
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
-		bg.screenCenter();
+		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height,
+			FlxColor.fromHSB(FlxG.random.int(0, 359), FlxG.random.float(0, 0.8), FlxG.random.float(0.3, 1)));
+		bg.alpha = 0.6;
+		bg.scrollFactor.set();
 		add(bg);
 
 		resetButton = new FlxButton(FlxG.width - 200, 50, 'Reset', function()
