@@ -91,7 +91,7 @@ class MusicBeatState extends FNFUIState
 		mobileControls.visible = false;
 		add(mobileControls);
 		
-		if (PlayState.SONG.song.toLowerCase() == 'collision')
+		if (PlayState.SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
 		{
 	        _pad = new FlxVirtualPad(NONE, A);
 		_pad.alpha = 0.75;
