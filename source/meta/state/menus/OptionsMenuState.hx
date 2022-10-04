@@ -61,6 +61,7 @@ class OptionsMenuState extends MusicBeatState
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
 					['controls', openControlmenu],
+					#if mobile ['mobile controls', openMobileControlmenu],#end
 					['exit', exitMenu]
 				]
 			],
@@ -326,15 +327,6 @@ class OptionsMenuState extends MusicBeatState
 				thisAttachment.y = setting.y - 50;
 			}
 		}
-		
-		#if mobile
-		if (virtualPad.buttonC.justPressed) {
-				#if mobile
-				removeVirtualPad();
-				#end
-			openSubState(new mobile.MobileControlsSubState());
-		}
-		#end
 
 		if (controls.BACK)
 		{
@@ -604,6 +596,25 @@ class OptionsMenuState extends MusicBeatState
 			//});
 		}
 	}
+
+	#if mobile
+	public function openMobileControlmenu()
+	{
+		if (controls.ACCEPT)
+		{
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			lockedMovement = true;
+			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			{
+				#if mobile
+				removeVirtualPad();
+				#end
+				openSubState(new mobile.MobileControlsSubState());
+				lockedMovement = false;
+			});
+		}
+	}
+	#end
 
 	public function openControlmenu()
 	{
