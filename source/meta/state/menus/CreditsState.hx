@@ -65,6 +65,7 @@ class CreditsState extends MusicBeatState
 		super.create();
 
 		daTeam = [ // name, icon, color, description, link, 0 = twitter  1 = youtube  2 = discord (sla)
+                ["Boyfriend FNF", 'nothing', FlxColor.fromRGB(69,69,69), 'Android Port', "youtube.com/c/BoyfriendFNF", 1],
 		["Antony",		 'antony', 		FlxColor.fromRGB(233,0,0), 		'Diretor, Artista de Background, Escritor dos diálogos\n"Sim um furry fez esse mod, tenha medo"',			"https://twitter.com/Rizzatti321", 0],
 		["JulianoBeta",	 'juliano', 	FlxColor.fromRGB(13,33,70), 	'Diretor, Compositor e Charter\n"${julianoFrase}"', 														"https://www.youtube.com/channel/UCRDeljMur0lEz1nXhrFKE9A", 1],
 		["teles",		 'teles', 		FlxColor.fromRGB(255,129,60), 	'Co-Diretora, Coder, Artista/Animadora e Compositora\n(Sprites do Chicken/Presidente e Cutscene da Big-Boy)\n"IT KEEPS HAPPENING"',	"https://twitter.com/itzteles_aa", 0],
@@ -323,7 +324,9 @@ class CreditsState extends MusicBeatState
 		desc.y = FlxG.height - desc.height - 10;
 
 		// os grupinho
-		if(curSelected >= 0 && curSelected < 21)
+		if(curSelected == 0)
+			theGroup.text = "Guy who ported the mod lol";
+		if(curSelected >= 1 && curSelected < 21)
 			theGroup.text = "Yung Lixo Rework Team";
 		if(curSelected >= 21 && curSelected < 26)
 			theGroup.text = "Yung Lixo V1 Team";
