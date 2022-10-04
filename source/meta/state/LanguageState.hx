@@ -34,11 +34,6 @@ class LanguageState extends MusicBeatState
 			daText.ID = i;
 			daButtons.push(daText);
 			add(daText);
-
-                        #if mobile
-                        addVirtualPad(UP_DOWN, A);
-                        addPadCamera();
-                        #end
 		}
 	}
 
