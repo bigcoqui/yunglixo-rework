@@ -2651,7 +2651,7 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 	  #if mobile
 	  mobileControls.visible = false;
-		        if (SONG.song.toLowerCase() == 'collision')
+		        if (SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
 		        {
 			_pad.visible = false;
 		        }
@@ -3035,7 +3035,7 @@ class PlayState extends MusicBeatState
 		
 	  #if mobile
 	  mobileControls.visible = true;
-		        if (SONG.song.toLowerCase() == 'collision')
+		        if (SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
 		        {
 			_pad.visible = true;
 		        }
