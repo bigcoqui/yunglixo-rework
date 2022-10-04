@@ -223,7 +223,7 @@ class FreeplayState extends MusicBeatState
 		add(minerTxtWarn);
 		
 		#if mobile
-    addVirtualPad(LEFT_FULL, A_B);
+    addVirtualPad(LEFT_FULL, A_B_C);
     #end
 	}
 
@@ -277,7 +277,7 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		//var accepted = controls.ACCEPT;
-		var accepted = FlxG.keys.justPressed.ENTER;
+		var accepted = controls.ACCEPT;
 
 		if (upP)
 			changeSelection(-1);
@@ -295,7 +295,7 @@ class FreeplayState extends MusicBeatState
 			Main.switchState(this, new MainMenuState());
 		}
 		
-		if (FlxG.keys.justPressed.SPACE && theSong == "crazy-pizza")
+		if (FlxG.keys.justPressed.SPACE #if android || virtualPad.buttonC.justPressed #end && theSong == "crazy-pizza")
 			changeCheckmark(!FlxG.save.data.minerMode);
 
 		if (accepted)
