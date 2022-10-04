@@ -37,6 +37,7 @@ class LanguageState extends MusicBeatState
 
                         #if mobile
                         addVirtualPad(UP_DOWN, A);
+                        addPadCamera();
                         #end
 		}
 	}
