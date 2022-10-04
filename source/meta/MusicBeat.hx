@@ -7,6 +7,7 @@ import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 import meta.*;
 import meta.data.*;
+import meta.state.PlayState;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.dependency.FNFUIState;
 #if mobile
