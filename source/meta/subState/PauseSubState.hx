@@ -133,6 +133,7 @@ class PauseSubState extends MusicBeatSubState
 		
 		#if mobile
 		addVirtualPad(UP_DOWN, A);
+		addPadCamera();
 		#end
 
 		#if debug
