@@ -18,7 +18,7 @@ class Texts
 					'accuracy' => "Precisão: ",
 					'character' => "ESCOLHA SEU PERSONAGEM",
 					'flashing' => "AVISO\n\nEsse mod contém luzes fortes\nCaso você seja sensível a elas desative-as nas Opções\n\nVocê foi avisado.",
-					'space' => #if mobile "APERTE C PARA TROCAR" #else "APERTE ESPAÇO PARA TROCAR",
+					'space' => #if mobile "APERTE C PARA TROCAR" #else "APERTE ESPAÇO PARA TROCAR", #end
 				];
 			
 			default:
@@ -31,7 +31,7 @@ class Texts
 					'accuracy' => "Accuracy: ",
 					'character' => "CHOOSE YOUR CHARACTER",
 					'flashing' => "WARNING\n\nThis mod contains Flashing Lights\nIf you're sensible to them turn em off in the Options\n\nYou have been warned.",
-					'space' => #if mobile "PRESS C TO TOGGLE" #else "PRESS SPACE TO TOGGLE" #end,
+					'space' => #if mobile "PRESS C TO TOGGLE" #else "PRESS SPACE TO TOGGLE", #end
 				];
 		}
 	}
