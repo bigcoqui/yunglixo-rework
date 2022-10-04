@@ -158,6 +158,10 @@ class OptionsMenuState extends MusicBeatState
 		add(infoText);
 
 		loadSubgroup('main');
+		
+		#if mobile
+		addVirtualPad(LEFT_FULL, A_B_C);
+		#end
 	}
 
 	private var currentAttachmentMap:Map<Alphabet, Dynamic>;
@@ -322,6 +326,15 @@ class OptionsMenuState extends MusicBeatState
 				thisAttachment.y = setting.y - 50;
 			}
 		}
+		
+		#if mobile
+		if (virtualPad.buttonC.justPressed) {
+				#if mobile
+				removeVirtualPad();
+				#end
+			openSubState(new mobile.MobileControlsSubState());
+		}
+		#end
 
 		if (controls.BACK)
 		{

@@ -38,6 +38,10 @@ class FlashingState extends MusicBeatState
 
     daText.x = Math.floor((FlxG.width / 2) - (daText.width / 2));
     daText.y = Math.floor((FlxG.height / 2) - (daText.height / 2));
+    
+    #if mobile
+    addVirtualPad(NONE, A_B);
+    #end
   }
 
   override function update(elapsed:Float)

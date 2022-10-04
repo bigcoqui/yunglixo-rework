@@ -158,6 +158,11 @@ class GameOverSubstate extends MusicBeatSubState
 		FlxG.camera.target = null;
 		
 		FlxG.camera.follow(camFollow, LOCKON, 0.01);
+		
+		#if mobile
+		addVirtualPad(NONE, A_B);
+		addPadCamera();
+		#end
 	}
 	
 	private function getArrayFromTxt(text:String):Array<String>

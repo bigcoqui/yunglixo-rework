@@ -71,7 +71,7 @@ class Init extends FlxState
 			NOT_FORCED
 		],
 		'Controller Mode' => [
-			false,
+			#if android true #else false #end,
 			Checkmark,
 			'Whether to use a controller instead of the keyboard to play.',
 			NOT_FORCED
@@ -284,6 +284,10 @@ class Init extends FlxState
 
 	override public function create():Void
 	{
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+	  
 		FlxG.save.bind('foreverengine-options');
 		Highscore.load();
 

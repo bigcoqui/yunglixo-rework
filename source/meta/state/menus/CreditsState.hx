@@ -191,6 +191,10 @@ class CreditsState extends MusicBeatState
 		socialmedia.scale.set(0.8,0.8);
 		socialmedia.updateHitbox();
 		add(socialmedia);
+		
+		#if mobile
+    addVirtualPad(UP_DOWN, A_B);
+    #end
 
 		changeSelection();
 	}

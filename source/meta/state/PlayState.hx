@@ -42,6 +42,7 @@ import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
 import openfl.utils.Assets;
 import sys.io.File;
+import openfl.utils.Assets as OpenFlAssets;
 import flixel.system.scaleModes.*;
 import lime.app.Application;
 using StringTools;
@@ -518,6 +519,10 @@ class PlayState extends MusicBeatState
 		dialogueHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(dialogueHUD);
 
+		#if mobile
+		addMobileControls();
+		#end
+		
 		//
 		keysArray = [
 			copyKey(Init.gameControls.get('LEFT')[0]),
@@ -780,7 +785,7 @@ class PlayState extends MusicBeatState
 
 		if(waitforcountdown) // warningStart
 		{
-			if(controls.DODGE)
+			if(controls.DODGE #if android || _pad.buttonA.justPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				waitforcountdown = false;
@@ -796,11 +801,23 @@ class PlayState extends MusicBeatState
 		if (dialogueBox != null && dialogueBox.alive)
 		{
 			// wheee the shift closes the dialogue
-			if (FlxG.keys.justPressed.SHIFT)
+			if (FlxG.keys.justPressed.SHIFT #if android || FlxG.android.justReleased.BACK #end)
 				dialogueBox.closeDialog();
+				
+		#if android
+                var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				justTouched = true;
+			}
+		}
+		#end
 
 			// the change I made was just so that it would only take accept inputs
-			if (controls.ACCEPT && dialogueBox.textStarted)
+			if (controls.ACCEPT #if android || justTouched #end && dialogueBox.textStarted)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				dialogueBox.curPage += 1;
@@ -815,7 +832,7 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 		{
 			// pause the game if the game is allowed to pause and enter is pressed
-			if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
+			if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 			{
 				pauseGame();
 			}
@@ -836,7 +853,7 @@ class PlayState extends MusicBeatState
 				//	boyfriendStrums.autoplay = !boyfriendStrums.autoplay;
 			}
 
-			if(controls.DODGE && !botplay) // dodge
+			if(controls.DODGE #if android || _pad.buttonA.justPressed #end && !botplay) // dodge
 				bfDodge();
 
 			if(SONG.song.toLowerCase() == 'collision')
@@ -2624,6 +2641,13 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		songMusic.volume = 0;
 		vocals.volume = 0;
+	  #if mobile
+	  mobileControls.visible = false;
+		        if (SONG.song.toLowerCase() == 'collision')
+		        {
+			_pad.visible = false;
+		        }
+	  #end
 		//if (SONG.validScore)
 		if(neverUsedBotplay)
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
@@ -2837,11 +2861,11 @@ class PlayState extends MusicBeatState
 		blackStart.alpha = 0;
 	
 		var dialogPath = Paths.json(SONG.song.toLowerCase() + '/dialogue' + dialogueModifier); // reshaped and gemafunkin !!1!!
-		if (sys.FileSystem.exists(dialogPath))
+		if (OpenFlAssets.exists(dialogPath))
 		{
 			startedCountdown = false;
 
-			dialogueBox = DialogueBox.createDialogue(sys.io.File.getContent(dialogPath));
+			dialogueBox = DialogueBox.createDialogue(OpenFlAssets.getText(dialogPath));
 			dialogueBox.cameras = [dialogueHUD];
 			dialogueBox.whenDaFinish = startCountdown;
 
@@ -2866,12 +2890,9 @@ class PlayState extends MusicBeatState
 
 	function playCutscene(name:String, atEndOfSong:Bool = false)
 	{
-		inCutscene = true;
+		inCutscene = false;
 		FlxG.sound.music.stop();
 	
-		var video:MP4Handler = new MP4Handler();
-		video.finishCallback = function()
-		{
 			if (atEndOfSong)
 			{
 				if (storyPlaylist.length <= 0)
@@ -2886,8 +2907,7 @@ class PlayState extends MusicBeatState
 			{
 				callTheFunny();
 			}
-		}
-		video.playVideo(Paths.video(name));
+		//video.playVideo(Paths.video(name));
 	}
 
 	function bfDodge()
@@ -2999,6 +3019,15 @@ class PlayState extends MusicBeatState
 		blackStart.alpha = 0;
 	
 		inCutscene = false;
+		
+	  #if mobile
+	  mobileControls.visible = true;
+		        if (SONG.song.toLowerCase() == 'collision')
+		        {
+			_pad.visible = true;
+		        }
+	  #end
+	  
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
 

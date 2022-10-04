@@ -58,6 +58,10 @@ class GoToCreditsState extends MusicBeatState
     warning.setGraphicSize(Std.int(warning.width * 1.5));
     warning.screenCenter();
     add(warning);
+    
+    #if mobile
+    addVirtualPad(NONE, A_B);
+    #end
   }
 
   override function update(elapsed:Float)

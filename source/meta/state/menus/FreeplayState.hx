@@ -25,6 +25,7 @@ import openfl.media.Sound;
 import sys.FileSystem;
 import sys.thread.Mutex;
 import sys.thread.Thread;
+import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
@@ -220,6 +221,10 @@ class FreeplayState extends MusicBeatState
 		minerTxtWarn.setFormat(scoreText.font, 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		minerTxtWarn.x = FlxG.width - minerTxtWarn.width - 20;
 		add(minerTxtWarn);
+		
+		#if mobile
+    addVirtualPad(LEFT_FULL, A_B);
+    #end
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor)
@@ -227,8 +232,8 @@ class FreeplayState extends MusicBeatState
 		///*
 		var coolDifficultyArray = [];
 		for (i in CoolUtil.difficultyArray)
-			if (FileSystem.exists(Paths.songJson(songName, songName + '-' + i))
-				|| (FileSystem.exists(Paths.songJson(songName, songName)) && i == "NORMAL"))
+			if (OpenFlAssets.exists(Paths.songJson(songName, songName + '-' + i))
+				|| (OpenFlAssets.exists(Paths.songJson(songName, songName)) && i == "NORMAL"))
 				coolDifficultyArray.push(i);
 
 		if (coolDifficultyArray.length > 0)
