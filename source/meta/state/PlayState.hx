@@ -853,9 +853,9 @@ class PlayState extends MusicBeatState
 				//	boyfriendStrums.autoplay = !boyfriendStrums.autoplay;
 			}
 
-		if(SONG.song.toLowerCase() == 'collision')
+		if(SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
 		{
-			if(controls.DODGE #if android || _pad.buttonA.justPressed #end && !botplay && Init.trueMechanics[1]) // dodge
+			if(controls.DODGE #if android || _pad.buttonA.justPressed #end && !botplay) // dodge
 				bfDodge();
                 }
 
