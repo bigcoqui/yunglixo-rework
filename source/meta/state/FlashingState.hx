@@ -28,7 +28,8 @@ class FlashingState extends MusicBeatState
     avisado.alpha = 0;
     add(avisado);
 
-    warning = 'AVISO\n\nEsse mod contém luzes fortes\nCaso você seja sensível a elas desative-as nas Opções\n\nVocê foi avisado.';
+    //warning = 'AVISO\n\nEsse mod contém luzes fortes\nCaso você seja sensível a elas desative-as nas Opções\n\nVocê foi avisado.';
+	warning = Texts.UITexts.get('flashing');
 
     daText = new FlxText(40, 40, 1180, warning, 36);
 		daText.setFormat(Paths.font("vcr.ttf"), 36, FlxColor.WHITE, CENTER);
@@ -38,16 +39,23 @@ class FlashingState extends MusicBeatState
 
     daText.x = Math.floor((FlxG.width / 2) - (daText.width / 2));
     daText.y = Math.floor((FlxG.height / 2) - (daText.height / 2));
-    
-    #if mobile
-    addVirtualPad(NONE, A_B);
-    addPadCamera();
-    #end
   }
 
   override function update(elapsed:Float)
   {
-    if(controls.ACCEPT || controls.BACK)
+		#if android
+                var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				justTouched = true;
+			}
+		}
+		#end
+    
+    if(controls.ACCEPT || controls.BACK #if android || justTouched #end)
       gotoGame();
 
     if(avisoAppear)

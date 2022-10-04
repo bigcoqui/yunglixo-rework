@@ -64,6 +64,8 @@ class CharacterMenuState extends MusicBeatState
 
 		// uh
 		persistentUpdate = persistentDraw = true;
+		
+		FlxG.sound.playMusic(Paths.music('breakfast'), 0.7);
 
 		// background
 		var backdrop:FlxSprite = new FlxBackdrop(Paths.image('menus/ylr/tileLoop'), 8, 8, true, true, 1, 1);
@@ -125,7 +127,8 @@ class CharacterMenuState extends MusicBeatState
 
 		// from the base game lol
 
-		var versionShit:FlxText = new FlxText(10, 48, 0, "CHOOSE YOUR CHARACTER", 48);
+		//var versionShit:FlxText = new FlxText(10, 48, 0, "CHOOSE YOUR CHARACTER", 48);
+		var versionShit:FlxText = new FlxText(10, 48, 0, Texts.UITexts.get('character'), 48);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(isMiner ? "comicBOLD.ttf" : "splatter.otf", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
