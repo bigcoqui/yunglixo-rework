@@ -161,6 +161,10 @@ class CharacterMenuState extends MusicBeatState
 		FlxG.save.flush();
 		
 		updateSelection();
+
+                #if mobile
+                addVirtualPad(LEFT_RIGHT, A_B);
+                #end
 	}
 
 	override function update(elapsed:Float)
