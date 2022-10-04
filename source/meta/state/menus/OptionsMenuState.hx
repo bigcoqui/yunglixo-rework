@@ -86,7 +86,7 @@ class OptionsMenuState extends MusicBeatState
 				[
 					['Gameplay Settings', null],
 					['', null],
-					['Controller Mode', getFromOption],
+					//['Controller Mode', getFromOption],
 					['Downscroll', getFromOption],
 					['Centered Notefield', getFromOption],
 					['Ghost Tapping', getFromOption],
@@ -161,7 +161,7 @@ class OptionsMenuState extends MusicBeatState
 		loadSubgroup('main');
 		
 		#if mobile
-		addVirtualPad(LEFT_FULL, A_B_C);
+		addVirtualPad(LEFT_FULL, A_B);
 		#end
 	}
 
@@ -625,6 +625,9 @@ class OptionsMenuState extends MusicBeatState
 			//lockedMovement = true;
 			//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
 			//{
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new OptionsSubstate());
 				//lockedMovement = false;
 			//});
