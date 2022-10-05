@@ -23,10 +23,10 @@ class Texts
 
 					'pause' => ['retomar', 'reiniciar musica', 'ajustes', 'botplay', 'sair para o menu'],
 				];
-
+				
 				lyrics = [
 					'kt_1' => "Vida Boa",
-
+					
 					'coll_1' => "MUGEN",
 					'coll_2' => " É",
 					'coll_3' => " A",
@@ -54,10 +54,10 @@ class Texts
 					
 					'pause' => ['Resume', 'Restart Song', 'Options', 'Botplay', 'Exit to menu'],
 				];
-
+				
 				lyrics = [
 					'kt_1' => "Good Life",
-
+					
 					'coll_1' => "MUGEN",
 					'coll_2' => " IS",
 					'coll_3' => " THE",
