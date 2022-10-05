@@ -2935,7 +2935,7 @@ class PlayState extends MusicBeatState
 	{
 		blackStart.alpha = 0;
 	
-		var dialogPath = Paths.json(SONG.song.toLowerCase() + '${Init.trueSettings.get('Language').toLowerCase()}' + '/dialogue' + dialogueModifier); // reshaped and gemafunkin !!1!!
+		var dialogPath = Paths.json(SONG.song.toLowerCase() + '/${Init.trueSettings.get('Language').toLowerCase()}' + '/dialogue' + dialogueModifier); // reshaped and gemafunkin !!1!!
 		if (OpenFlAssets.exists(dialogPath))
 		{
 			startedCountdown = false;
