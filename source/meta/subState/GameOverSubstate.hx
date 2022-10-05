@@ -121,7 +121,7 @@ class GameOverSubstate extends MusicBeatSubState
 				*/
 				
 				// not hardcoded anymore yeah 8)
-				var randomText:Array<String> = CoolUtil.coolTextFile(Paths.txt('chickenDeath')));
+				var randomText:Array<String> = CoolUtil.coolTextFile(Paths.txt('chickenDeath'));
 				
 				chickenDeathText = new Alphabet(0, 0, randomText[FlxG.random.int(0, randomText.length - 1)], true, false, 1.9);
 				chickenDeathText.screenCenter();
