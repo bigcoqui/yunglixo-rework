@@ -345,10 +345,10 @@ class Init extends FlxState
 		*/
 		
 		// yeaa
-		if(FlxG.save.data.firstTime)
-			Main.switchState(this, new FlashingState());
-		else
+		if(!FlxG.save.data.firstTime)
 			Main.switchState(this, new TitleState());
+		else
+			Main.switchState(this, new FlashingState());
 	}
 
 	public static function loadSettings():Void
