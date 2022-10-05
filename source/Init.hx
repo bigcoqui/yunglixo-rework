@@ -321,8 +321,8 @@ class Init extends FlxState
 		if (FlxG.save.data.daiane == null)
 			FlxG.save.data.daiane = false;
 			
-		if(FlxG.save.data.firstTime == null)
-			FlxG.save.data.firstTime = true;
+		/*if(FlxG.save.data.firstTime == null)
+			FlxG.save.data.firstTime = true;*/
 
 		// mecanicas
 		if (FlxG.save.data.mechanics == null)
@@ -345,9 +345,9 @@ class Init extends FlxState
 		*/
 		
 		// yeaa
-		if(FlxG.save.data.firstTime)
+		/*if(FlxG.save.data.firstTime)
 			Main.switchState(this, new FlashingState());
-		else
+		else*/ //nooo
 			Main.switchState(this, new TitleState());
 	}
 
