@@ -121,7 +121,7 @@ class GameOverSubstate extends MusicBeatSubState
 				*/
 				
 				// not hardcoded anymore yeah 8)
-				var randomText:Array<String> = getArrayFromTxt(Assets.getText(Paths.txt('chickenDeath')));
+				var randomText:Array<String> = CoolUtil.coolTextFile(Paths.txt('chickenDeath'));
 				
 				chickenDeathText = new Alphabet(0, 0, randomText[FlxG.random.int(0, randomText.length - 1)], true, false, 1.9);
 				chickenDeathText.screenCenter();
@@ -163,21 +163,6 @@ class GameOverSubstate extends MusicBeatSubState
 		addVirtualPad(NONE, A_B);
 		addPadCamera();
 		#end
-	}
-	
-	private function getArrayFromTxt(text:String):Array<String>
-    {
-		var choices:Array<String> = new Array();
-		var lines = text.split("\n");// split in all lines
-		var line:String;
-		while (lines.length > 0) 
-		{
-			line = lines.shift().replace("\r", "");
-			if (line.length != 0)
-				choices.push(line);
-		}
-		
-		return choices;
 	}
 
 	var playedMusic:Bool = false;
@@ -229,7 +214,7 @@ class GameOverSubstate extends MusicBeatSubState
 				chickenDeathText.y = chickenDeathText.startY - Math.cos(elapsedtime) * 30;
 				chickenDeathText.angle = Math.cos(elapsedtime) * 15;
 				
-				if(bf.y >= 1350 && !playedMusic)
+				if(bf.y >= 1900 && !playedMusic)
 				{
 					playedMusic = true;
 					FlxG.sound.playMusic(Paths.music('gameOver'));

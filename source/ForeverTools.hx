@@ -52,5 +52,8 @@ class ForeverTools
 			songsArray[i].destroy();
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 }

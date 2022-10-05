@@ -310,6 +310,10 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
+<<<<<<< HEAD
+=======
+				//createCoolText(['Not associated', 'with']);
+>>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 				createCoolText(Texts.UITexts.get('title'));
 			case 7:
 				addMoreText('Arwen Team');
