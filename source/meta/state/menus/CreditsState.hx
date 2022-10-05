@@ -225,7 +225,7 @@ class CreditsState extends MusicBeatState
 
 			if (accepted)
 			{
-				if(curSelected == 27 && !FlxG.save.data.daiane)
+				if(curSelected == 28 && !FlxG.save.data.daiane)
 					loadSong();
 				else
 					CoolUtil.browserLoad(daTeam[curSelected][4]);
@@ -255,7 +255,7 @@ class CreditsState extends MusicBeatState
 		}
 		
 		// spooky
-		var isSpooky:Bool = (curSelected == 27);
+		var isSpooky:Bool = (curSelected == 28);
 		vaca.y = FlxMath.lerp(vaca.y, (isSpooky ? 200 : 4000), (isSpooky ? 0.00004 : 0.05));
 		
 		for(item in grpCharacters)
@@ -326,13 +326,13 @@ class CreditsState extends MusicBeatState
 		// os grupinho
 		if(curSelected == 0)
 			theGroup.text = "Guy who ported the mod lol";
-		if(curSelected >= 1 && curSelected < 21)
+		if(curSelected >= 1 && curSelected < 22)
 			theGroup.text = "Yung Lixo Rework Team";
-		if(curSelected >= 21 && curSelected < 26)
+		if(curSelected >= 22 && curSelected < 27)
 			theGroup.text = "Yung Lixo V1 Team";
-		if(curSelected == 26)
-			theGroup.text = "Agradecimentos Especiais";
 		if(curSelected == 27)
+			theGroup.text = "Agradecimentos Especiais";
+		if(curSelected == 28)
 			theGroup.text = "???";
 		theGroup.x = Math.floor((FlxG.width / 2) - (theGroup.width / 2));
 		theGroup.y = desc.y - theGroup.height - 10;
