@@ -241,13 +241,10 @@ class FreeplayState extends MusicBeatState
 		
 		// for some reason it crashes when i dont do this
 		Init.saveMechanics();
-<<<<<<< HEAD
 		
 		#if mobile
     addVirtualPad(LEFT_FULL, A_B_C);
     #end
-=======
->>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor)
@@ -318,11 +315,7 @@ class FreeplayState extends MusicBeatState
 			Main.switchState(this, new MainMenuState());
 		}
 		
-<<<<<<< HEAD
 		if (FlxG.keys.justPressed.SPACE #if mobile || virtualPad.buttonC.justPressed #end && threadActive)
-=======
-		if (FlxG.keys.justPressed.SPACE && threadActive)
->>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 		{
 			for(i in 0...mechanicsString.length)
 			{

@@ -61,7 +61,7 @@ class CharacterMenuState extends MusicBeatState
 		// set the transitions to the previously set ones
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
-		
+
 		// uh
 		persistentUpdate = persistentDraw = true;
 		
@@ -328,7 +328,7 @@ class CharacterMenuState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		var idleTimer:FlxTimer = new FlxTimer().start(1, function(timer:FlxTimer) {
 			if (FlxG.sound.music != null)
-				FlxG.sound.music.stop();
+			FlxG.sound.music.stop();
 			Main.switchState(this, new PlayState());
 		}, 1);
 	}

@@ -22,7 +22,7 @@ class PauseSubState extends MusicBeatSubState
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var botplayPause:FlxText;
-	var menuItems:Array<String> = Texts.UITexts.get('pause');
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Options', 'Botplay', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -110,11 +110,9 @@ class PauseSubState extends MusicBeatSubState
 		{
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
 			songText.isMenuItem = true;
-			songText.middleX = true;
+			songText.disableX = true;
 			songText.targetY = i;
 			grpMenuShit.add(songText);
-			
-			songText.x = ((FlxG.width / 2) - (songText.width / 2));
 		}
 		
 		for(i in grpMenuShit.members)
@@ -170,20 +168,20 @@ class PauseSubState extends MusicBeatSubState
 
 		if (accepted)
 		{
-			var daSelected:String = menuItems[curSelected].toLowerCase();
+			var daSelected:String = menuItems[curSelected];
 
 			switch (daSelected)
 			{
-				case "resume" | "retomar":
+				case "Resume":
 					close();
-				case "restart song" | "reiniciar musica":
+				case "Restart Song":
 					Main.switchState(this, new PlayState());
-				case "options" | "ajustes":
+				case "Options":
 					Main.switchState(this, new OptionsMenuState());
 					OptionsMenuState.isPlaying = true;
-				case "botplay":
+				case "Botplay":
 					PlayState.botplay = !PlayState.botplay;
-				case "exit to menu" | "sair para o menu":
+				case "Exit to menu":
 					PlayState.resetMusic();
 					PlayState.deaths = 0;
 
@@ -209,8 +207,8 @@ class PauseSubState extends MusicBeatSubState
 			
 		botplayPause.visible = PlayState.botplay;
 		
-		/*for(i in grpMenuShit.members)
-			i.x = ((FlxG.width / 2) - (i.width / 2));*/
+		for(i in grpMenuShit.members)
+			i.x = ((FlxG.width / 2) - (i.width / 2));
 	}
 
 	override function destroy()

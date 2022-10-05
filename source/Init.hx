@@ -323,21 +323,13 @@ class Init extends FlxState
 			
 		if(FlxG.save.data.firstTime == null)
 			FlxG.save.data.firstTime = true;
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 		// mecanicas
 		if (FlxG.save.data.mechanics == null)
 			trueMechanics = [false, false];
 		else
 			trueMechanics = FlxG.save.data.mechanics;
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 		saveMechanics();
 
 		gotoTitleScreen();
@@ -354,15 +346,9 @@ class Init extends FlxState
 		
 		// yeaa
 		if(FlxG.save.data.firstTime)
-<<<<<<< HEAD
 			Main.switchState(this, new FlashingState());
 		else
 			Main.switchState(this, new TitleState());
-=======
-			Main.switchState(this, new LanguageState());
-		else
-			Main.switchState(this, new FlashingState());
->>>>>>> 17f5ef78c54a3597091eb35bde3e6b6808c8fe6e
 	}
 
 	public static function loadSettings():Void
@@ -404,7 +390,7 @@ class Init extends FlxState
 		//	trueSettings.set("Note Skin", 'default');
 
 		saveSettings();
-		
+
 		updateAll();
 
 		if(FlxG.save.data.volume != null)
