@@ -20,7 +20,7 @@ class Texts
 					'character' => "ESCOLHA SEU PERSONAGEM",
 					'flashing' => "AVISO\n\nEsse mod contém luzes fortes\nCaso você seja sensível a elas desative-as nas Opções\n\nVocê foi avisado.",
 					'space' => #if mobile "APERTE C PARA TROCAR" #else "APERTE ESPAÇO PARA TROCAR", #end
-					
+
 					'pause' => ['retomar', 'reiniciar musica', 'ajustes', 'botplay', 'sair para o menu'],
 				];
 
