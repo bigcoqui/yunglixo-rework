@@ -70,6 +70,12 @@ class Init extends FlxState
 			'Whether to have the strumline vertically flipped in gameplay.',
 			NOT_FORCED
 		],
+		'mechsHitboxesPos' => [
+		  true,
+		  Checkmark,
+      'if unchecked, hitboxes for mechanics would be at the top instead of bottom'
+		  NOT_FORCED
+		],
 		'Controller Mode' => [
 			#if android true #else false #end,
 			Checkmark,
